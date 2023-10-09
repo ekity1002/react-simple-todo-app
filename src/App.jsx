@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ColorfulMessage from "./components/ColorfulMessage";
+import { ColorfulMessage } from "./components/ColorfulMessage";
 
 const App = () => {
   console.log("@@@@@@@@@@@@@@@@@@@@");
@@ -17,7 +17,7 @@ const App = () => {
   useEffect(() => {
     console.log("num useEffect!!!!!");
   }, [num]);
-  
+
   return (
     <>
       <h1 style={{ color: "red" }}>HELLO</h1>
