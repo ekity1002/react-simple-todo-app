@@ -1,11 +1,14 @@
-import { StrictMode } from "react";
+import React from "react";
 import ReactDom from "react-dom";
 
-import App from "./App";
+const App = () => {
+  return (
+    <>
+      <h1>HELLO</h1>
+      <p>元気ですか</p>
+    </>
+  );
+};
 
-ReactDom.render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-  document.getElementById("root")
-);
+// HTMLのroot id の要素に APP のDOM内容を反映する
+ReactDom.render(<App />, document.getElementById("root"));
