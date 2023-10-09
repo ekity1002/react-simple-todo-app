@@ -11,6 +11,12 @@ const App = () => {
     setIncompleteTodos(newTodos); //新しいtodoリストをstate関数に設定 -> 再レンダリングがかかる
     setTodoText("");
   };
+  const onClickDelete = (index) => {
+    alert(`index * ${index}`);
+    const newTodos = [...incompleteTodos];
+    newTodos.splice(index, 1); //指定したindexの要素から、1つ削除する
+    setIncompleteTodos(newTodos);
+  };
 
   const [incompleteTodos, setIncompleteTodos] = useState([
     "あああああ",
@@ -31,13 +37,13 @@ const App = () => {
       <div className="incomplete-area">
         <p className="title">未完了のTODO</p>
         <ul></ul>
-        {incompleteTodos.map((todo) => {
+        {incompleteTodos.map((todo, index) => {
           return (
             <li key={todo}>
               <div className="list-row">
                 <p>{todo}</p>
                 <button>完了</button>
-                <button>削除</button>
+                <button onClick={() => onClickDelete(index)}>削除</button>
               </div>
             </li>
           );
