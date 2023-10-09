@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./style.css";
 
 const App = () => {
+  console.log("Apppppppppppppppp");
   const [todoText, setTodoText] = useState("");
   const onChangeTodoText = (event) => setTodoText(event.target.value);
   const onClickAdd = () => {
@@ -12,12 +13,17 @@ const App = () => {
     setTodoText("");
   };
   const onClickDelete = (index) => {
-    alert(`index * ${index}`);
     const newTodos = [...incompleteTodos];
     newTodos.splice(index, 1); //指定したindexの要素から、1つ削除する
     setIncompleteTodos(newTodos);
   };
-
+  const onClickComplete = (index) => {
+    const newCompleteTodos = [...completeTodos, incompleteTodos[index]];
+    const newIncompleteTodos = [...incompleteTodos];
+    newIncompleteTodos.splice(index, 1);
+    setIncompleteTodos(newIncompleteTodos);
+    setCompleteTodos(newCompleteTodos);
+  };
   const [incompleteTodos, setIncompleteTodos] = useState([
     "あああああ",
     "いいいいい",
@@ -42,7 +48,7 @@ const App = () => {
             <li key={todo}>
               <div className="list-row">
                 <p>{todo}</p>
-                <button>完了</button>
+                <button onClick={() => onClickComplete(index)}>完了</button>
                 <button onClick={() => onClickDelete(index)}>削除</button>
               </div>
             </li>
