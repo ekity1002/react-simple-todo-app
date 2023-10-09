@@ -24,6 +24,13 @@ const App = () => {
     setIncompleteTodos(newIncompleteTodos);
     setCompleteTodos(newCompleteTodos);
   };
+  const onClickBack = (index) => {
+    const newIncompleteTodos = [...incompleteTodos, completeTodos[index]];
+    const newCompleteTodos = [...completeTodos];
+    newCompleteTodos.splice(index, 1);
+    setCompleteTodos(newCompleteTodos);
+    setIncompleteTodos(newIncompleteTodos);
+  };
   const [incompleteTodos, setIncompleteTodos] = useState([
     "あああああ",
     "いいいいい",
@@ -58,12 +65,12 @@ const App = () => {
       <div className="complete-area">
         <p className="title">完了したTODO</p>
         <ul>
-          {completeTodos.map((todo) => {
+          {completeTodos.map((todo, index) => {
             return (
               <li key={todo}>
                 <div className="list-row">
                   <p>{todo}</p>
-                  <button>戻る</button>
+                  <button onClick={() => onClickBack(index)}>戻る</button>
                 </div>
               </li>
             );
